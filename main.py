@@ -1,5 +1,7 @@
 # Visionoscope Workbench
 
+import time
+
 # Built-in packages
 import PIL
 # External packages
@@ -105,8 +107,8 @@ def display_result_frames(st_frame, image):
         resource = model.track(image, conf=confidence, persist=True, tracker=tracker_type)
 
     # Plot the result objects on the video frame
-    resource_plotted = resource[0].plot()
-    st_frame.image(resource_plotted, caption='Result Video', channels="BGR", use_column_width=True)
+    plotted_resource = resource[0].plot()
+    st_frame.image(plotted_resource, caption='Result Video', channels="BGR", use_column_width=True)
 
 
 source_image = None
@@ -141,8 +143,8 @@ if source_radio == IMAGE_SOURCE:
                 else:
                     resource = model.track(uploaded_image, conf=confidence, persist=True, tracker=tracker_type)
                 boxes = resource[0].boxes
-                resource_plotted = resource[0].plot()[:, :, ::-1]
-                st.image(resource_plotted, caption='Result Image', use_column_width=True)
+                plotted_resource = resource[0].plot()[:, :, ::-1]
+                st.image(plotted_resource, caption='Result Image', use_column_width=True)
                 st.snow()
                 try:
                     with st.expander("Results"):
