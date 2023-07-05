@@ -3,5 +3,5 @@ Our offline web application
 
 ## Usage
 ```
-streamlit run main.py --server.port 8501
+streamlit run main.py
 ```
